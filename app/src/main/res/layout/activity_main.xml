@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_start_screen"
+    tools:context=".MainActivity">
+
+    <!-- Quiz Khelo Logo -->
+    <ImageView
+        android:id="@+id/quizLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/quiz_khelo_logo"
+        android:scaleType="centerInside" />
+
+    <!-- Hint Text above Input Field -->
+    <TextView
+        android:id="@+id/hintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quizLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Enter your name"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- User Name Input Field (Transparent, Oval with White Border) -->
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/hintText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Your Name"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_input"
+        android:elevation="5dp" />
+
+    <!-- Start Quiz Button (Same Shape as Input, Yellow Background, White Text) -->
+    <Button
+        android:id="@+id/startQuizButton"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="50dp"
+    android:text="Start Quiz"
+    android:textSize="18sp"
+    android:padding="12dp"
+    android:background="@drawable/rounded_button"
+    android:textColor="@android:color/white" />
+
+</RelativeLayout>

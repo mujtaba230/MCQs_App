@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="20dp"
+    tools:context=".QuizActivity">
+
+    <!-- Top Bar (Back Button + Progress) -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back_arrow"
+            android:padding="5dp"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Progress Text (Example: "7/10") -->
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/10"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <!-- Question Card (Fix: Added Unique ID) -->
+    <LinearLayout
+        android:id="@+id/questionCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topBar"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:background="@drawable/rounded_card"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question appears here"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Answer Options -->
+    <RadioGroup
+        android:id="@+id/answerGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionCard"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
+
+    <RadioButton
+        android:id="@+id/option1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 1"
+        android:textSize="16sp"
+        android:buttonTint="@color/black" />
+
+    <RadioButton
+        android:id="@+id/option2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 2"
+        android:textSize="16sp"
+        android:buttonTint="@color/black" />
+
+    <RadioButton
+        android:id="@+id/option3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 3"
+        android:textSize="16sp"
+        android:buttonTint="@color/black" />
+
+    <RadioButton
+        android:id="@+id/option4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 4"
+        android:textSize="16sp"
+        android:buttonTint="@color/black" />
+</RadioGroup>
+
+    <!-- Bottom Navigation Buttons -->
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/answerGroup"
+android:layout_marginTop="40dp"
+android:gravity="center"
+android:orientation="horizontal">
+
+<Button
+    android:id="@+id/previousButton"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:text="Previous"
+    android:textSize="18sp"
+    android:background="@drawable/button_bg"
+    android:textColor="@android:color/white"
+    android:padding="12dp"
+    android:layout_weight="1"
+    android:visibility="gone" />
+
+<Button
+    android:id="@+id/nextButton"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:text="Next"
+    android:textSize="18sp"
+    android:background="@drawable/button_bg"
+    android:textColor="@android:color/white"
+    android:padding="12dp"
+    android:layout_weight="1" />
+</LinearLayout>
+
+    </RelativeLayout>
