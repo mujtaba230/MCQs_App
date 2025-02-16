@@ -38,14 +38,12 @@
         android:layout_below="@id/hintText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:hint="Enter Your Name"
+
         android:padding="12dp"
         android:textSize="16sp"
         android:textColor="@android:color/white"
         android:background="@drawable/rounded_input"
         android:elevation="5dp" />
-
-    <!-- Start Quiz Button (Same Shape as Input, Yellow Background, White Text) -->
     <Button
         android:id="@+id/startQuizButton"
         android:layout_width="350dp"
