@@ -18,8 +18,6 @@ public class QuizActivity extends AppCompatActivity {
     private Button nextButton, previousButton;
     private int currentQuestionIndex = 0;
     private int score = 0;
-
-    // Array of Questions
     private String[] questions = {
             "What is the capital of France?",
             "Which planet is known as the Red Planet?",
@@ -33,7 +31,6 @@ public class QuizActivity extends AppCompatActivity {
             "What is the hardest natural substance on Earth?"
     };
 
-    // Options for each question
     private String[][] options = {
             {"Paris", "London", "Berlin", "Madrid"},
             {"Mars", "Venus", "Jupiter", "Saturn"},
@@ -46,11 +43,7 @@ public class QuizActivity extends AppCompatActivity {
             {"Shakespeare", "Hemingway", "Austen", "Dickens"},
             {"Diamond", "Gold", "Iron", "Platinum"}
     };
-
-    // Index of correct answers
     private int[] correctAnswers = {0, 0, 1, 0, 0, 0, 1, 2, 0, 0};
-
-    // Array to store selected answers
     private int[] userAnswers = new int[questions.length];
 
     @Override
@@ -67,45 +60,35 @@ public class QuizActivity extends AppCompatActivity {
         option4 = findViewById(R.id.option4);
         nextButton = findViewById(R.id.nextButton);
         previousButton = findViewById(R.id.previousButton);
-
-        // Initialize userAnswers with -1 (meaning no selection)
         for (int i = 0; i < userAnswers.length; i++) {
             userAnswers[i] = -1;
         }
 
         loadQuestion();
-
-        // Next Button Click (Navigates to Next Question or Shows Result)
         nextButton.setOnClickListener(v -> {
             int selectedId = answerGroup.getCheckedRadioButtonId();
             if (selectedId == -1) {
                 Toast.makeText(QuizActivity.this, "Please select an answer!", Toast.LENGTH_SHORT).show();
             } else {
-                // Store user's selected answer
                 if (selectedId == option1.getId()) userAnswers[currentQuestionIndex] = 0;
                 if (selectedId == option2.getId()) userAnswers[currentQuestionIndex] = 1;
                 if (selectedId == option3.getId()) userAnswers[currentQuestionIndex] = 2;
                 if (selectedId == option4.getId()) userAnswers[currentQuestionIndex] = 3;
 
-                // Check answer and update score
                 if (userAnswers[currentQuestionIndex] == correctAnswers[currentQuestionIndex]) {
                     score++;
                 }
-
-                // Move to next question or finish
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
                     loadQuestion();
                 } else {
-                   // showResult();
+                    showResult();
                 }
             }
         });
-
-        // Previous Button Click (Navigates to Previous Question)
         previousButton.setOnClickListener(v -> {
             if (currentQuestionIndex > 0) {
-                currentQuestionIndex--; // Go back to previous question
+                currentQuestionIndex--;
                 loadQuestion();
             }
         });
@@ -121,7 +104,6 @@ public class QuizActivity extends AppCompatActivity {
         option3.setText(options[currentQuestionIndex][2]);
         option4.setText(options[currentQuestionIndex][3]);
 
-        // Restore previously selected answer
         answerGroup.clearCheck();
         if (userAnswers[currentQuestionIndex] != -1) {
             if (userAnswers[currentQuestionIndex] == 0) option1.setChecked(true);
@@ -129,11 +111,9 @@ public class QuizActivity extends AppCompatActivity {
             if (userAnswers[currentQuestionIndex] == 2) option3.setChecked(true);
             if (userAnswers[currentQuestionIndex] == 3) option4.setChecked(true);
         }
-
-        // Disable Previous Button at First Question
         previousButton.setEnabled(currentQuestionIndex > 0);
 
-        // Change "Next" button to "Finish" on the last question
+
         if (currentQuestionIndex == questions.length - 1) {
             nextButton.setText("Finish");
         } else {
@@ -141,11 +121,13 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-   /* private void showResult() {
+    private void showResult() {
         Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+        intent.putExtra("USER_NAME",getIntent().getStringExtra("USER_NAME"));
         intent.putExtra("FINAL_SCORE", score);
+        intent.putExtra("TOTAL_QUESTIONS",questions.length);
 
         startActivity(intent);
-        finish(); // Close QuizActivity
-    }*/
+        finish();
+    }
 }
